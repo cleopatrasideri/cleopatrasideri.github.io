@@ -36,7 +36,7 @@ Il sito è stato pensato per essere **mantenuto da chiunque**, anche senza esper
 | Pagine | HTML5 scritto a mano | Si apre e si modifica con qualsiasi editor di testo |
 | Stile | Un solo file `css/style.css`, con le variabili (colori, font, spaziature) in testa | Un solo posto dove guardare |
 | Script | `js/main.js` minimo: menu mobile, anno nel footer, invio del form senza cambiare pagina | Il sito funziona anche con JavaScript disattivato |
-| Build | **Nessuna** | Niente Node, npm, framework o dipendenze da aggiornare |
+| Build | **Nessuna** | Il sito non si compila. Node/npm servono solo per il server locale di sviluppo (Vite, `npm run dev`) |
 | Font | Fraunces (titoli) e Nunito Sans (testo), file `.woff2` ospitati nel sito | Nessuna chiamata a Google Fonts: più semplice per il GDPR |
 | Hosting | GitHub Pages | Gratuito, HTTPS incluso, si aggiorna da solo a ogni commit |
 | Form | Web3Forms | Gratuito, nessun server da gestire |
@@ -85,17 +85,16 @@ cleopatra-sideri/
 
 ## Vedere il sito in locale
 
-**Modo più semplice:** doppio clic su `index.html`. Si apre nel browser e si può navigare.
-
 **Modo consigliato** (i percorsi e il form si comportano come online): da un terminale nella cartella del progetto
 
 ```bash
-python -m http.server 8000
+npm install     # solo la prima volta
+npm run dev
 ```
 
-poi aprire <http://localhost:8000>. Per fermarlo: `Ctrl+C`.
+Si apre il browser su <http://localhost:5173> (serve Node 20.19 o più recente). Per fermarlo: `Ctrl+C`. Vite serve solo da server di sviluppo: il sito non si compila.
 
-Non serve altro.
+**Ripiego senza Node:** doppio clic su `index.html`. Si apre nel browser e si può navigare, perché le pagine usano percorsi relativi; ma `404.html` (percorsi assoluti `/css/...`) si vede senza stile e il form non si comporta come online.
 
 ---
 

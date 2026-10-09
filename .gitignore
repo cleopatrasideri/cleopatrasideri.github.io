@@ -4,5 +4,8 @@
 # Documentazione interna: è un repository privato a parte (cleopatra-sideri-docs), clonato dentro docs/
 docs/
 
+# Dipendenze di sviluppo (npm install)
+node_modules/
+
 # File di scarto di Windows/Git Bash
 *.stackdump

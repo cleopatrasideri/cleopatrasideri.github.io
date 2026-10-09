@@ -8,7 +8,7 @@ Sito vetrina statico di **Cleopatra Sideri** (Montesilvano, PE): Biodanza per **
 Il sito appartiene a Cleopatra, che non ha competenze tecniche: deve poter essere mantenuto da chiunque, con aggiornamenti circa una volta l'anno. Chi ci lavora oggi potrebbe non esserci domani.
 
 ## Regole tecniche (non negoziabili)
-- **HTML5 + un solo `css/style.css` + JavaScript vanilla minimo. Zero build, zero framework, zero dipendenze npm.** Tailwind e simili sono stati scartati di proposito.
+- **HTML5 + un solo `css/style.css` + JavaScript vanilla minimo. Zero build, zero framework, nessuna dipendenza nel sito.** Tailwind e simili sono stati scartati di proposito. Unica eccezione: **`vite` come devDependency**, solo per il server locale (`npm run dev`). Vietati `vite build`, plugin e altri pacchetti.
 - Colori, font e spaziature solo come **custom properties in `:root`**; niente colori "a mano" nel resto del CSS.
 - **Header e footer sono duplicati** in ogni pagina tra `<!-- HEADER START/END -->` e `<!-- FOOTER START/END -->`: ogni modifica va riportata in **tutte** le pagine. `404.html` usa **percorsi assoluti** (`/css/...`).
 - Sezioni HTML marcate con `<!-- SEZIONE: Nome -->`. Segnaposto: commento `<!-- DA COMPLETARE: ... -->` + testo visibile `<span class="todo">[...]</span>`, elencati in [docs/DA-COMPLETARE.md](docs/DA-COMPLETARE.md).
@@ -47,7 +47,7 @@ Tutto ciò che riguarda il progetto va scritto **in file markdown del repository
 - **Mai fare `git commit` o `git push` di propria iniziativa**, né nel repository del sito né in `docs/`: li fa sempre chi mantiene il sito. Solo se lo chiede esplicitamente, e solo per quella volta. A fine lavoro elencare i file modificati, così può rivederli e fare commit e push.
 
 ## Verifiche prima di consegnare
-- **Vedere il sito**: `python -m http.server 8000` nella cartella del progetto, poi <http://localhost:8000>. Controllare desktop e smartphone (375 px).
+- **Vedere il sito**: `npm run dev` nella cartella del progetto (la prima volta `npm install`); si apre da solo il browser su <http://localhost:5173>. Controllare desktop e smartphone (375 px).
 - **HTML valido**: validatore W3C (<https://validator.w3.org/nu/>), anche via API: `curl -H "Content-Type: text/html; charset=utf-8" --data-binary @pagina.html "https://validator.w3.org/nu/?out=json"`.
 - **Qualità**: `npx lighthouse http://localhost:8000/pagina.html` (le prestazioni in locale sono più basse che online: il server di prova non comprime i file).
 - **Link interni**: nessun `href`/`src` verso file inesistenti.

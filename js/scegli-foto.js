@@ -2,9 +2,13 @@
   STRUMENTO TEMPORANEO per scegliere le foto (da eliminare dopo la scelta,
   insieme alla cartella img/candidati e ai due <script> che lo caricano).
 
-  Funziona solo in locale (localhost o file aperto dal disco):
-    - clic su una foto        → candidato successivo
-    - Maiusc + clic           → candidato precedente
+  Funziona in locale (localhost, file aperto dal disco o rete di casa, così si
+  può provare dal telefono con `python -m http.server 8000` e
+  http://<IP del PC>:8000) e sull'indirizzo provvisorio cleopatrasideri.github.io,
+  da cui Cleopatra vede il sito. Con il dominio vero NON parte mai:
+    - clic / tocco su una foto → candidato successivo
+    - Maiusc + clic            → candidato precedente
+    - scorrimento orizzontale (swipe) sulla foto: a destra precedente, a sinistra successivo
     - le scelte restano salvate nel browser e valgono su tutte le pagine
     - il pannello in alto a sinistra mostra le scelte; "Copia scelte" le copia
       negli appunti, da incollare a chi aggiorna il sito
@@ -12,7 +16,8 @@
 (function () {
   "use strict";
 
-  var isLocal = location.protocol === "file:" || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+  var isLocal = location.protocol === "file:" ||
+    /^(localhost|127\.0\.0\.1|\[::1\]|10\.\d+\.\d+\.\d+|192\.168\.\d+\.\d+|172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+|[a-z0-9-]+\.local|cleopatrasideri\.github\.io)$/.test(location.hostname);
   if (!isLocal || !window.CANDIDATI) return;
 
   var STORAGE = "scelta-foto";
@@ -49,12 +54,14 @@
   function show(slot) {
     var list = window.CANDIDATI[slot];
     var c = list[choices[slot] || 0];
+    // Precarica il successivo, così il cambio al tocco è immediato
+    new Image().src = list[((choices[slot] || 0) + 1) % list.length].src;
     images.forEach(function (img) {
       if (img.getAttribute("data-slot") !== slot) return;
       img.src = c.src;
       img.width = c.w;
       img.height = c.h;
-      img.title = slot + " — candidato " + ((choices[slot] || 0) + 1) + " di " + list.length + " (clic: successivo, Maiusc+clic: precedente)";
+      img.title = slot + " — candidato " + ((choices[slot] || 0) + 1) + " di " + list.length + " (tocco/clic: successivo, Maiusc+clic o swipe a destra: precedente)";
     });
     renderPanel();
   }
@@ -67,6 +74,14 @@
     "font:13px/1.45 system-ui,sans-serif", "box-shadow:0 8px 24px rgba(0,0,0,.35)"
   ].join(";"));
   document.body.appendChild(panel);
+  if (window.innerWidth < 600) {
+    // Su smartphone il pannello copre le foto: parte ridotto, un tocco lo apre/chiude
+    panel.style.top = "auto";
+    panel.style.bottom = "8px";
+    panel.style.left = "8px";
+    panel.style.maxWidth = "calc(100vw - 16px)";
+    panel.setAttribute("data-compact", "1");
+  }
 
   function renderPanel() {
     var rows = Object.keys(window.CANDIDATI).map(function (slot) {
@@ -78,6 +93,15 @@
       "<button type='button' style='font:inherit;padding:4px 10px;border-radius:6px;border:0;cursor:pointer'>Copia scelte</button>" +
       " <span data-msg></span>";
     panel.querySelector("button").addEventListener("click", copy);
+    if (panel.getAttribute("data-compact")) {
+      var rowsBox = panel.children[1];
+      rowsBox.style.display = panel.getAttribute("data-open") ? "" : "none";
+      panel.firstChild.addEventListener("click", function () {
+        if (panel.getAttribute("data-open")) panel.removeAttribute("data-open");
+        else panel.setAttribute("data-open", "1");
+        renderPanel();
+      });
+    }
   }
 
   function copy() {
@@ -98,17 +122,35 @@
     }
   }
 
+  function step(slot, delta) {
+    var total = window.CANDIDATI[slot].length;
+    choices[slot] = ((choices[slot] || 0) + delta + total) % total;
+    save();
+    show(slot);
+  }
+
   images.forEach(function (img) {
+    var startX = 0, startY = 0, swiped = false;
     img.style.cursor = "pointer";
+    img.style.touchAction = "manipulation";
+    img.addEventListener("touchstart", function (e) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      swiped = false;
+    }, { passive: true });
+    img.addEventListener("touchend", function (e) {
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > 2 * Math.abs(dy)) {
+        swiped = true;
+        step(img.getAttribute("data-slot"), dx > 0 ? -1 : 1);
+      }
+    }, { passive: true });
     img.addEventListener("click", function (event) {
       event.preventDefault();
       event.stopPropagation();
-      var slot = img.getAttribute("data-slot");
-      var total = window.CANDIDATI[slot].length;
-      var step = event.shiftKey ? -1 : 1;
-      choices[slot] = ((choices[slot] || 0) + step + total) % total;
-      save();
-      show(slot);
+      if (swiped) { swiped = false; return; }
+      step(img.getAttribute("data-slot"), event.shiftKey ? -1 : 1);
     });
   });
 
