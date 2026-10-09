@@ -2,7 +2,7 @@
 name: push
 description: Fa commit e push del repository del sito e di quello privato docs/ (cleopatra-sideri-docs). Solo su richiesta esplicita dell'utente (/push).
 disable-model-invocation: true
-allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Bash(git push:*), Bash(git log:*), Bash(git -C docs status:*), Bash(git -C docs diff:*), Bash(git -C docs add:*), Bash(git -C docs commit:*), Bash(git -C docs push:*), Bash(git -C docs log:*)
+allowed-tools: Bash(npm run cache-bust:*), Bash(git status:*), Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Bash(git push:*), Bash(git log:*), Bash(git -C docs status:*), Bash(git -C docs diff:*), Bash(git -C docs add:*), Bash(git -C docs commit:*), Bash(git -C docs push:*), Bash(git -C docs log:*)
 ---
 
 # /push — commit e push di entrambi i repository
@@ -12,7 +12,9 @@ Il progetto ha **due repository git separati** (vedi AGENTS.md): il sito (pubbli
 Poiché l'utente ha lanciato `/push`, commit e push sono esplicitamente richiesti, ma solo per questa volta.
 
 ## Procedura
-Per ciascun repository (`git ...` per il sito, `git -C docs ...` per docs):
+0. **Prima di tutto** lanciare `npm run cache-bust` nella cartella del sito: aggiorna i `?v=` di CSS e JS nelle pagine HTML, così il browser non usa copie in cache. Le modifiche che produce vanno nello stesso commit del sito. Se fallisce, fermarsi e riferire l'errore. Non riguarda `docs/`.
+
+Poi, per ciascun repository (`git ...` per il sito, `git -C docs ...` per docs):
 
 1. `status --short --branch` e `diff --stat`. Se non c'è niente da committare né da inviare (`log @{u}..HEAD --oneline` vuoto), dirlo e passare oltre.
 2. **Controllo di sicurezza prima di committare** (soprattutto per il sito, che è pubblico): leggere l'elenco dei file e fermarsi, chiedendo conferma, se compare qualcosa che sembra un segreto o un dato personale (`.env*`, chiavi, token, indirizzo di casa o data di nascita di Cleopatra, documenti di terzi, `node_modules/`). `.env.local` è ignorato da git: non deve mai comparire.

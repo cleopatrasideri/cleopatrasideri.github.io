@@ -170,6 +170,8 @@ Il sito si pubblica da solo: **ogni commit sul branch `main` aggiorna il sito on
 4. Per sostituire un'immagine: entrare nella cartella (es. `img/`), *Add file → Upload files*, caricare il file con **lo stesso nome**, commit.
 5. Attendere 1–2 minuti e ricaricare il sito (se non cambia: `Ctrl+F5` o finestra in incognito).
 
+> Se hai modificato `css/style.css` o un file in `js/` da qui, i visitatori potrebbero vedere la versione vecchia per una decina di minuti (cache). Non è un errore: si risolve da solo, e al prossimo lavoro in locale `npm run cache-bust` allinea gli indirizzi (vedi sotto).
+
 ### Con git in locale
 <a id="lavorare-in-locale"></a>
 Sono **due repository**: il sito (pubblico) e `docs/` (privato), clonato dentro la cartella del sito.
@@ -184,11 +186,14 @@ Ogni volta che si riprende il lavoro, e per pubblicare:
 ```bash
 git pull; git -C docs pull          # aggiorna entrambi
 # modifiche...
+npm run cache-bust                   # se hai toccato css/ o js/: aggiorna i ?v= nelle pagine
 git add .
 git commit -m "Descrizione della modifica"
 git push                             # pubblica il sito
 git -C docs add . && git -C docs commit -m "..." && git -C docs push   # solo se hai cambiato docs/
 ```
+
+**Perché `npm run cache-bust`**: nelle pagine gli indirizzi di CSS e JS hanno un `?v=<codice>` che cambia solo quando il file cambia. Così i browser scaricano subito la versione nuova invece di tenere quella in cache (GitHub Pages la tiene 10 minuti). Lo script (`scripts/cache-bust.mjs`) usa solo Node, non scarica nulla; con `npm run cache-bust:check` si verifica che sia tutto allineato. Se si cambia hosting si può togliere senza conseguenze.
 
 Il file `.ignore` nella radice serve a far trovare `docs/` alle ricerche di VS Code e degli agenti AI, che altrimenti salterebbero le cartelle ignorate da git.
 

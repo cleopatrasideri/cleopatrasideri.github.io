@@ -2,7 +2,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "cache-bust": "node scripts/cache-bust.mjs",
+    "cache-bust:check": "node scripts/cache-bust.mjs --check"
   },
   "devDependencies": {
     "vite": "^8.3.4"

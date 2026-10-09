@@ -9,6 +9,7 @@ Il sito appartiene a Cleopatra, che non ha competenze tecniche: deve poter esser
 
 ## Regole tecniche (non negoziabili)
 - **HTML5 + un solo `css/style.css` + JavaScript vanilla minimo. Zero build, zero framework, nessuna dipendenza nel sito.** Tailwind e simili sono stati scartati di proposito. Unica eccezione: **`vite` come devDependency**, solo per il server locale (`npm run dev`). Vietati `vite build`, plugin e altri pacchetti.
+- **Cache degli asset**: GitHub Pages tiene CSS e JS in cache 10 minuti, quindi nelle pagine gli URL hanno `?v=<hash>` (es. `css/style.css?v=252749c0`). Non scriverli a mano: dopo ogni modifica a `css/` o `js/` lanciare **`npm run cache-bust`** (script `scripts/cache-bust.mjs`, solo Node, nessuna dipendenza; la skill `/push` lo fa da sola). `vendor/` è escluso. Nelle pagine nuove basta scrivere l'URL senza `?v=` e lanciare lo script.
 - Colori, font e spaziature solo come **custom properties in `:root`**; niente colori "a mano" nel resto del CSS.
 - **Header e footer sono duplicati** in ogni pagina tra `<!-- HEADER START/END -->` e `<!-- FOOTER START/END -->`: ogni modifica va riportata in **tutte** le pagine. `404.html` usa **percorsi assoluti** (`/css/...`).
 - Sezioni HTML marcate con `<!-- SEZIONE: Nome -->`. Segnaposto: commento `<!-- DA COMPLETARE: ... -->` + testo visibile `<span class="todo">[...]</span>`, elencati in [docs/DA-COMPLETARE.md](docs/DA-COMPLETARE.md).
@@ -51,6 +52,7 @@ Tutto ciò che riguarda il progetto va scritto **in file markdown del repository
 - **HTML valido**: validatore W3C (<https://validator.w3.org/nu/>), anche via API: `curl -H "Content-Type: text/html; charset=utf-8" --data-binary @pagina.html "https://validator.w3.org/nu/?out=json"`.
 - **Qualità**: `npx lighthouse http://localhost:8000/pagina.html` (le prestazioni in locale sono più basse che online: il server di prova non comprime i file).
 - **Link interni**: nessun `href`/`src` verso file inesistenti.
+- **Cache degli asset**: `npm run cache-bust:check` deve uscire senza errori (altrimenti `npm run cache-bust`).
 - **Regole di contenuto**: cercare nel sito parole vietate ("terza età" fuori dal curriculum, "facilitatrice titolata", "terapia" fuori dai disclaimer, prezzi in cifre).
 - Le statistiche in locale non partono: gli eventi compaiono nella console del browser (righe `[analytics]`).
 
