@@ -4,7 +4,10 @@
   "scripts": {
     "dev": "vite",
     "cache-bust": "node scripts/cache-bust.mjs",
-    "cache-bust:check": "node scripts/cache-bust.mjs --check"
+    "cache-bust:check": "node scripts/cache-bust.mjs --check",
+    "check": "node scripts/check.mjs",
+    "check:lancio": "node scripts/check.mjs --lancio",
+    "check:w3c": "node scripts/check.mjs --w3c"
   },
   "devDependencies": {
     "vite": "^8.3.4"
