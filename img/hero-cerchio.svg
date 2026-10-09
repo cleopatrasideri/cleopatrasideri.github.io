@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Illustrazione: persone che danzano in cerchio tenendosi per mano attorno al sole">
+  <defs>
+    <g id="persona">
+      <!-- figura stilizzata, testa verso l'esterno del cerchio -->
+      <circle cx="200" cy="44" r="13"/>
+      <path d="M200 60c-6 12-7 26-4 40h8c3-14 2-28-4-40z"/>
+      <path d="M196 98l-10 28M204 98l10 28" stroke-width="8" stroke-linecap="round" fill="none" stroke="currentColor"/>
+      <path d="M200 70c-16 2-30 10-42 22M200 70c16 2 30 10 42 22" stroke-width="7" stroke-linecap="round" fill="none" stroke="currentColor"/>
+    </g>
+  </defs>
+
+  <!-- macchia di sfondo -->
+  <path d="M206 18c78 4 160 52 172 132 13 84-37 186-128 220C160 404 54 370 26 284-4 194 28 112 86 62c34-30 74-46 120-44z" fill="#f7d9b8"/>
+
+  <!-- sole al centro -->
+  <circle cx="200" cy="200" r="54" fill="#f2b33d"/>
+  <circle cx="200" cy="200" r="74" fill="none" stroke="#f2b33d" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"/>
+
+  <!-- il cerchio delle mani -->
+  <circle cx="200" cy="200" r="112" fill="none" stroke="#3e2541" stroke-width="3" stroke-dasharray="1 9" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- persone: i colori sono quelli dei 4 elementi -->
+  <g fill="#a8702f" color="#a8702f"><use href="#persona"/></g>
+  <g fill="#2e6f8e" color="#2e6f8e" transform="rotate(45 200 200)"><use href="#persona"/></g>
+  <g fill="#d9603b" color="#d9603b" transform="rotate(90 200 200)"><use href="#persona"/></g>
+  <g fill="#5c9fc4" color="#5c9fc4" transform="rotate(135 200 200)"><use href="#persona"/></g>
+  <g fill="#3e2541" color="#3e2541" transform="rotate(180 200 200)"><use href="#persona"/></g>
+  <g fill="#8fa68a" color="#8fa68a" transform="rotate(225 200 200)"><use href="#persona"/></g>
+  <g fill="#b8482a" color="#b8482a" transform="rotate(270 200 200)"><use href="#persona"/></g>
+  <g fill="#e0a21c" color="#e0a21c" transform="rotate(315 200 200)"><use href="#persona"/></g>
+
+  <!-- note musicali -->
+  <g fill="#3e2541" opacity="0.7">
+    <path d="M352 64v26a8 8 0 1 1-4-7V58l18-5v20a8 8 0 1 1-4-7V60z"/>
+    <path d="M40 330v22a7 7 0 1 1-4-6v-20l14-4v5z"/>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+# Chiavi e segreti locali: non vanno mai pubblicati
+.env.local
+
+# Documentazione interna: è un repository privato a parte (cleopatra-sideri-docs), clonato dentro docs/
+docs/
+
+# File di scarto di Windows/Git Bash
+*.stackdump

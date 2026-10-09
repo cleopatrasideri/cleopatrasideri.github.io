@@ -1,0 +1,3 @@
+# Fa vedere docs/ agli strumenti di ricerca basati su ripgrep (Claude Code, VS Code)
+# anche se docs/ è nel .gitignore: è un repository privato separato, ma va cercato.
+!docs/
