@@ -2,7 +2,7 @@
 
 Sito vetrina statico di **Cleopatra Sideri**, Montesilvano (PE): Biodanza per adulti, bambini e ragazzi, e trattamenti/corsi di Reiki. (La terza età non viene proposta come attività dedicata: Cleopatra non ha le certificazioni specifiche.)
 
-- Indirizzo: <https://cleopatrasideri.it>
+- Indirizzo: <https://cleopatrasideri.github.io> (provvisorio, finché il dominio `cleopatrasideri.it` non è attivo: vedi "Dominio provvisorio" in [docs/DA-COMPLETARE.md](docs/DA-COMPLETARE.md))
 - Contatti di Cleopatra: tel/WhatsApp **328 690 3680**, email **sidercleo@gmail.com**
 - Hosting: GitHub Pages (gratuito). Dominio: `cleopatrasideri.it`, intestato a Cleopatra.
 
@@ -203,7 +203,7 @@ Lo stato della pubblicazione si vede nella scheda **Actions** del repository (pa
 |---|---|---|---|
 | GitHub Pages | Ospita il sito | Repository → Settings → Pages | Dominio personalizzato + "Enforce HTTPS" |
 | Registrar del dominio | `cleopatrasideri.it` e DNS | Pannello del registrar | Intestato a Cleopatra, rinnovo automatico. Vedi [HOSTING-E-DOMINIO](docs/HOSTING-E-DOMINIO.md) |
-| Web3Forms | Riceve i messaggi dei form e li inoltra per email a sidercleo@gmail.com | <https://web3forms.com> | Campo nascosto `access_key`; honeypot `botcheck`; redirect a `https://cleopatrasideri.it/grazie.html`. Il piano gratuito ha un limite mensile di invii: verificarlo sul sito |
+| Web3Forms | Riceve i messaggi dei form e li inoltra per email a sidercleo@gmail.com | <https://web3forms.com> | Campo nascosto `access_key`; honeypot `botcheck`; redirect a `https://cleopatrasideri.github.io/grazie.html` (poi `https://cleopatrasideri.it/grazie.html`). Il piano gratuito ha un limite mensile di invii: verificarlo sul sito |
 | Google Analytics 4 | Statistiche: visite, clic su WhatsApp/telefono/email, invii del modulo, sezioni lette | <https://analytics.google.com> | Proprietà intestata a Cleopatra. ID in `js/analytics.js`. Vedi sotto |
 | Google Business Profile | Farsi trovare su Google Maps / ricerca locale | <https://business.google.com> | Non tocca il codice del sito |
 | WhatsApp Business | Gestione contatti | App sul telefono di Cleopatra | Non tocca il codice del sito |

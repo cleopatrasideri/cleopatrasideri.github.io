@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cleopatrasideri.it/sitemap.xml
+Sitemap: https://cleopatrasideri.github.io/sitemap.xml
