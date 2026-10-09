@@ -44,6 +44,7 @@ Tutto ciò che riguarda il progetto va scritto **in file markdown del repository
 - Se la richiesta è ambigua, **fare domande di chiarimento prima di pianificare**; poi implementare in un unico passaggio.
 - Essere critici e onesti: segnalare rischi e alternative migliori, anche se contraddicono la richiesta.
 - Non dichiarare finito un lavoro senza averlo verificato (vedi sotto).
+- **Mai fare `git commit` o `git push` di propria iniziativa**, né nel repository del sito né in `docs/`: li fa sempre chi mantiene il sito. Solo se lo chiede esplicitamente, e solo per quella volta. A fine lavoro elencare i file modificati, così può rivederli e fare commit e push.
 
 ## Verifiche prima di consegnare
 - **Vedere il sito**: `python -m http.server 8000` nella cartella del progetto, poi <http://localhost:8000>. Controllare desktop e smartphone (375 px).
