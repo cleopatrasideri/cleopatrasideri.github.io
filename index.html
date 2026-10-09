@@ -18,6 +18,9 @@
   <meta property="og:url" content="https://cleopatrasideri.github.io/">
   <meta property="og:image" content="https://cleopatrasideri.github.io/img/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Biodanza con Cleopatra Sideri – Pescara e Montesilvano">
+  <meta name="twitter:description" content="Musica, movimento e incontro. Non serve saper ballare. La prima serata è gratuita.">
+  <meta name="twitter:image" content="https://cleopatrasideri.github.io/img/og-image.jpg">
 
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
@@ -30,10 +33,20 @@
   <meta name="theme-color" content="#fbf4ea">
 
   <!-- Dati strutturati per Google -->
+  <!-- DA COMPLETARE (JSON-LD sotto, il JSON non ammette commenti): in LocalBusiness aggiungere via e CAP in "address", "openingHoursSpecification" (orari delle serate), "geo" (coordinate della sede) e "sameAs" (Google Business Profile, social). Non inventare i valori: aggiungerli solo quando Cleopatra li ha confermati. -->
+  <!-- FAQPage: contiene solo le domande senza segnaposto. Aggiungere "Quante persone ci sono in un gruppo?" (e il testo della FAQ visibile) quando il numero è confermato. Il testo del JSON deve restare uguale a quello visibile nella sezione #domande. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://cleopatrasideri.github.io/#website",
+        "url": "https://cleopatrasideri.github.io/",
+        "name": "Cleopatra Sideri",
+        "inLanguage": "it-IT",
+        "publisher": { "@id": "https://cleopatrasideri.github.io/#cleopatra" }
+      },
       {
         "@type": "Person",
         "@id": "https://cleopatrasideri.github.io/#cleopatra",
@@ -43,10 +56,12 @@
         "image": "https://cleopatrasideri.github.io/img/cleopatra.jpg",
         "telephone": "+39 328 690 3680",
         "email": "sidercleo@gmail.com",
-        "knowsAbout": ["Biodanza", "Reiki", "Benessere psicofisico"]
+        "knowsAbout": ["Biodanza", "Reiki", "Benessere psicofisico"],
+        "worksFor": { "@id": "https://cleopatrasideri.github.io/#attivita" }
       },
       {
         "@type": "LocalBusiness",
+        "@id": "https://cleopatrasideri.github.io/#attivita",
         "name": "Biodanza con Cleopatra Sideri",
         "url": "https://cleopatrasideri.github.io/",
         "image": "https://cleopatrasideri.github.io/img/og-image.jpg",
@@ -60,6 +75,43 @@
           "addressRegion": "PE",
           "addressCountry": "IT"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://cleopatrasideri.github.io/#domande-frequenti",
+        "inLanguage": "it-IT",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Devo per forza toccare gli altri?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. Il contatto con gli altri è sempre graduale, rispettoso e facoltativo: si inizia con gesti semplici come darsi la mano in cerchio, e sei sempre tu a decidere fin dove ti va di arrivare." }
+          },
+          {
+            "@type": "Question",
+            "name": "E se mi sento in imbarazzo?",
+            "acceptedAnswer": { "@type": "Answer", "text": "È normalissimo, la prima volta capita a tutti. Nessuno ti guarda o ti giudica, e se un esercizio non ti va puoi fermarti e osservare. Di solito l'imbarazzo passa dopo pochi minuti." }
+          },
+          {
+            "@type": "Question",
+            "name": "È una religione o una filosofia particolare?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. La Biodanza non è legata a nessuna religione o credo: è un'attività di gruppo per il benessere, basata su musica, movimento e incontro. Puoi viverla con la tua sensibilità e le tue idee." }
+          },
+          {
+            "@type": "Question",
+            "name": "Quanto costa?",
+            "acceptedAnswer": { "@type": "Answer", "text": "La prima serata è gratuita. Poi ti iscrivi a un ciclo di 8 incontri alla volta, senza abbonamenti lunghi. I prezzi variano con le stagioni e ci sono diverse agevolazioni: chiedi il listino della stagione a Cleopatra su WhatsApp." }
+          },
+          {
+            "@type": "Question",
+            "name": "Ho qualche acciacco, posso partecipare?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Quasi sempre sì: ognuno si muove secondo le proprie possibilità e si può partecipare anche in modo molto dolce. Se hai problemi di salute importanti parlane prima con il tuo medico e raccontamelo, così posso tenerne conto." }
+          },
+          {
+            "@type": "Question",
+            "name": "Devo venire con qualcuno?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No, la maggior parte delle persone arriva da sola. Ma se vuoi portare un'amica o un amico, c'è un'agevolazione per tutti e due." }
+          }
+        ]
       }
     ]
   }
