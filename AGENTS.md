@@ -55,3 +55,5 @@ Tutto ciò che riguarda il progetto va scritto **in file markdown del repository
 
 ## Strumenti temporanei da rimuovere prima della pubblicazione
 - Selettore foto: `img/candidati/`, `js/scegli-foto.js` e le righe marcate `STRUMENTO TEMPORANEO` nelle pagine (procedura in [docs/DA-COMPLETARE.md](docs/DA-COMPLETARE.md)).
+- Anteprima nascosta ai motori di ricerca: righe marcate `ANTEPRIMA` (`<meta name="robots" content="noindex">`) in `index.html`, `biodanza-bambini.html`, `reiki.html`, `privacy.html`. Finché ci sono, Lighthouse SEO non arriva a 100: è previsto. In `404.html` e `grazie.html` il `noindex` invece è definitivo.
+- Indirizzo provvisorio `cleopatrasideri.github.io` al posto di `cleopatrasideri.it` (procedura "Tornare al dominio vero" in [docs/DA-COMPLETARE.md](docs/DA-COMPLETARE.md)).
