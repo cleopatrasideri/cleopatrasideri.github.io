@@ -44,7 +44,7 @@ Tutto ciò che riguarda il progetto va scritto **in file markdown del repository
 - Se la richiesta è ambigua, **fare domande di chiarimento prima di pianificare**; poi implementare in un unico passaggio.
 - Essere critici e onesti: segnalare rischi e alternative migliori, anche se contraddicono la richiesta.
 - Non dichiarare finito un lavoro senza averlo verificato (vedi sotto).
-- **Mai fare `git commit` o `git push` di propria iniziativa**, né nel repository del sito né in `docs/`: li fa sempre chi mantiene il sito. Solo se lo chiede esplicitamente, e solo per quella volta. A fine lavoro elencare i file modificati, così può rivederli e fare commit e push.
+- **Mai fare `git commit` o `git push` di propria iniziativa**, né nel repository del sito né in `docs/`: li fa sempre chi mantiene il sito. Solo se lo chiede esplicitamente, e solo per quella volta (in Claude Code lanciare `/push` equivale a chiederlo: fa commit e push dei due repository). A fine lavoro elencare i file modificati, così può rivederli e fare commit e push.
 
 ## Verifiche prima di consegnare
 - **Vedere il sito**: `npm run dev` nella cartella del progetto (la prima volta `npm install`); si apre da solo il browser su <http://localhost:5173>. Controllare desktop e smartphone (375 px).

@@ -75,12 +75,12 @@
   ].join(";"));
   document.body.appendChild(panel);
   if (window.innerWidth < 600) {
-    // Su smartphone il pannello copre le foto: parte ridotto, un tocco lo apre/chiude
-    panel.style.top = "auto";
-    panel.style.bottom = "8px";
-    panel.style.left = "8px";
-    panel.style.maxWidth = "calc(100vw - 16px)";
-    panel.setAttribute("data-compact", "1");
+    // Su smartphone niente pannello fisso (copre le foto): sta in fondo alla pagina
+    panel.style.position = "static";
+    panel.style.maxWidth = "none";
+    // margine in basso: lascia libero lo spazio della barra "contattami" (.mobile-cta, fissa)
+    panel.style.margin = "16px 16px calc(6rem + env(safe-area-inset-bottom))";
+    panel.style.boxShadow = "none";
   }
 
   function renderPanel() {
@@ -93,15 +93,6 @@
       "<button type='button' style='font:inherit;padding:4px 10px;border-radius:6px;border:0;cursor:pointer'>Copia scelte</button>" +
       " <span data-msg></span>";
     panel.querySelector("button").addEventListener("click", copy);
-    if (panel.getAttribute("data-compact")) {
-      var rowsBox = panel.children[1];
-      rowsBox.style.display = panel.getAttribute("data-open") ? "" : "none";
-      panel.firstChild.addEventListener("click", function () {
-        if (panel.getAttribute("data-open")) panel.removeAttribute("data-open");
-        else panel.setAttribute("data-open", "1");
-        renderPanel();
-      });
-    }
   }
 
   function copy() {
