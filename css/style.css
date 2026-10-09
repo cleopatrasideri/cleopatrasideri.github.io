@@ -1072,15 +1072,6 @@ ol {
   font-weight: 700;
 }
 
-/* Banner anteprima (temporaneo, da eliminare al lancio) */
-.anteprima-banner {
-  padding: 0.6rem 1rem;
-  background: #ffe7a3;
-  color: #6a4b00;
-  text-align: center;
-  font-size: 0.95rem;
-}
-
 /* Fascia invito all'azione */
 .cta-band {
   padding: clamp(2rem, 5vw, 3.5rem);
